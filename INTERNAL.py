@@ -66,3 +66,9 @@ secondary_questions = {
     "4!": 24
 
 }
+
+# Function to generate a math quiz
+def generate_quiz(level, questions):
+    print("Welcome to the {} level Math Quiz!".format(level))
+    score = 0
+    history = []
