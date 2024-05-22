@@ -72,3 +72,8 @@ def generate_quiz(level, questions):
     print("Welcome to the {} level Math Quiz!".format(level))
     score = 0
     history = []
+
+# Shuffle the questions
+    question_keys = list(questions.keys())
+    random.shuffle(question_keys)
+
