@@ -76,4 +76,16 @@ def generate_quiz(level, questions):
 # Shuffle the questions
     question_keys = list(questions.keys())
     random.shuffle(question_keys)
+    #answering questions, showing what question to answer, showing if question is correct or not, and overall score in quiz
+    for question in question_keys:
+        answer = input("What is {}? ".format(question))
+        if answer.isdigit() and int(answer) == questions[question]:
+            print("Correct!")
+            score += 1
+        else:
+            print("Incorrect. The correct answer is {}.".format(questions[question]))
+        history.append((question, answer))
+
+    print("You scored {}/{} in the {} level Math Quiz.".format(score, len(questions), level))
+    return history
 
