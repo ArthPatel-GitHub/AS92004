@@ -89,3 +89,40 @@ def generate_quiz(level, questions):
     print("You scored {}/{} in the {} level Math Quiz.".format(score, len(questions), level))
     return history
 
+# Function to display quiz history
+def display_history(history):
+    print("Quiz History:")
+    for question, answer in history:
+        print("Question: {} - Your Answer: {}".format(question, answer))
+
+# Main function
+def main():
+    quiz_history = []
+    while True:
+        print("\nSelect a Math Quiz level:")
+        print("1. Primary")
+        print("2. Secondary")
+        print("3. Intermediate")
+        print("4. View History")
+        print("5. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            quiz_history.extend(generate_quiz("Primary", primary_questions))
+        elif choice == '2':
+            quiz_history.extend(generate_quiz("Secondary", secondary_questions))
+        elif choice == '3':
+            quiz_history.extend(generate_quiz("Intermediate", intermediate_questions))
+        elif choice == '4':
+            display_history(quiz_history)
+        elif choice == '5':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    main()
+
+
+
