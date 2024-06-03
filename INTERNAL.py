@@ -50,7 +50,7 @@ def generating_intermediate_question():
 
 #The primary function to generate the secondary quiz maths questions for the user.
 def generating_secondary_question():
-    num1 = random.randint(1, 30)
+    num1 = random.randint(1, 40)
     num2 = random.randint(1, 10)
     operator = random.choice['*', '/']
     if operator == "*":
