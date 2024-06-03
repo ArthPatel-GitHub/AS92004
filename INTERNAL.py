@@ -17,162 +17,24 @@ challenging!) And thats all there is too it! Please have fun and as always, do y
 Please note that all questions should be rounded to one decimal place if it is neccesary!
 """
 
-# Function to generate primary math questions
+#The primary function to generate the primary quiz maths questions for the user.
 def generating_primary_question():
     num1 = random.randint(1, 10)
     num2 = random.randint(1, 5)
     operators = ['+', '-', '*', '/']
     operator = random.choice(operators)
-    if operator == '+'
+    if operator == '+':
         answer = num1 + num2
     elif operator == '-':
         answer = num1 - num2
     elif operator == '*':
         answer = num1 * num2
-    ###ignore###
     else:
-        # Avoid division by zero
+        # Avoid division by zero to make sure the questions are solveable.
         if num2 == 0:
             num2 = 1
         answer = num1 / num2
     answer = round(answer, 1)
     question = f"{num1} {operator} {num2}"
     return question, answer
-
-# Function to generate intermediate math questions
-def generate_intermediate_question():
-    num1 = random.randint(1, 15)
-    num2 = random.randint(1, 10)
-    operator = random.choice(['+', '-'])
-    answer = num1 + num2 if operator == '+' else num1 - num2
-    answer = round(answer, 1)
-    question = f"{num1} {operator} {num2}"
-    return question, answer
-
-# Function to generate secondary math questions
-def generate_secondary_question():
-    num1 = random.randint(1, 30)
-    num2 = random.randint(1, 10)
-    operator = random.choice(['*', '/'])
-    if operator == '*':
-        answer = num1 * num2
-    else:
-        # Avoid division by zero
-        if num2 == 0:
-            num2 = 1
-        answer = num1 / num2
-    answer = round(answer, 1)
-    question = f"{num1} {operator} {num2}"
-    return question, answer
-
-# Function to generate a math quiz
-def generate_quiz(level, infinite=False, num_questions=0):
-    print(f"Welcome to the {level} level Math Quiz!")
-    print("Please round your answers to 1 decimal place if necessary.")
-    score = 0
-    history = []
-
-    question_generator = {
-        "Primary": generate_primary_question,
-        "Intermediate": generate_intermediate_question,
-        "Secondary": generate_secondary_question
-    }[level]
-
-    while infinite or len(history) < num_questions:
-        question, answer = question_generator()
-        user_answer = input(f"What is {question}? (Enter 'c' to cancel the quiz) ")
-        if user_answer.lower() == 'c':
-            print("See you next time!")
-            print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
-            return score, history
-        try:
-            user_answer = round(float(user_answer), 1)
-            if abs(user_answer - answer) < 0.1:
-                print("Excellent Job!!! Keep going at it you smart one!!!!")
-                score += 1
-            else:
-                print(f"Sorry!!! The correct answer is {answer}. You will get it next time!!! Keep going!!!!!")
-            history.append((question, user_answer))
-        except ValueError:
-            print("You silly one! Enter a number! Not a letter!!!! Its Maths!!!!!!.")
-
-    print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
-    return score, history
-
-# Function to display quiz history
-def display_history(history):
-    print("Quiz History:")
-    for question, user_answer in history:
-        print(f"Question: {question} - Your Answer: {user_answer}")
-
-    percentage = (sum(1 for _, ans in history if isinstance(ans, float)) / len(history)) * 100
-    print(f"Score: {percentage:.2f}% ({sum(1 for _, ans in history if isinstance(ans, float))}/{len(history)})")
-
-# Function to get the number of questions from the user
-def get_num_questions():
-    while True:
-        num_questions = input("How many questions would you like to answer on this phenomenal quiz?? (Enter 'i' for infinite questions) ")
-        if num_questions.lower() == 'i':
-            return 'i'
-        try:
-            num_questions = int(num_questions)
-            if num_questions > 0:
-                return num_questions
-            else:
-                print("Woah! Good job for knowing that! But for know, lets stick to positive numbers!")
-        except ValueError:
-            print("Please enter the right answer you silly one! There only one right answer to maths!")
-
-# Main function
-def main():
-    quiz_history = []
-    while True:
-        print("\nSelect a Math Quiz level:")
-        print("1. Instructions")
-        print("2. Primary")
-        print("3. Intermediate")
-        print("4. Secondary")
-        print("5. View History")
-        print("6. Exit")
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            print(INSTRUCTIONS)
-        elif choice == '2':
-            num_questions = get_num_questions()
-            if num_questions == 'i':
-                quiz_history.append(generate_quiz("Primary", infinite=True))
-            else:
-                quiz_history.append(generate_quiz("Primary", num_questions=num_questions))
-        elif choice == '3':
-            num_questions = get_num_questions()
-            if num_questions == 'i':
-                quiz_history.append(generate_quiz("Intermediate", infinite=True))
-            else:
-                quiz_history.append(generate_quiz("Intermediate", num_questions=num_questions))
-        elif choice == '4':
-            num_questions = get_num_questions()
-            if num_questions == 'i':
-                quiz_history.append(generate_quiz("Secondary", infinite=True))
-            else:
-                quiz_history.append(generate_quiz("Secondary", num_questions=num_questions))
-        elif choice == '5':
-            if quiz_history:
-                display_history(quiz_history[-1][1])  # Show history of the latest quiz
-            else:
-                print("No quiz history yet.")
-        elif choice == '6':
-            print("Aw leaving already???... Thats ok! Thank you for playing and make sure to come back again!!!")
-            break
-        else:
-            print("Invalid choice. Please enter a number between 1 and 6.")
-
-if __name__ == "__main__":
-    main()
-
-
-
-
-
-
 
