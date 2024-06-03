@@ -4,15 +4,19 @@ A template to introduce your project.
 
 ## Description
 
-A brief introduction to your program.
+My program has three quizes, which are designed for primary, intermediate, and secondary students.
 
 ## Table of Contents
 
 My program has the following key features:
 - Feature 1
-- Another
-- ...
-- Insert as needed
+- Able to choose out of three quizes depending on the users choice.
+Feature 2
+- Feedback for the user if they have got the question wrong or right with a funny comment to make the quiz fun.
+Feature 3
+Has quiz history for the user so they can see the questions they have got wrong or right.
+
+
 
 ## Installation
 
@@ -21,7 +25,7 @@ Download to your project directory and run the app.py file:
 
 ## Author
 
-Your name 
+Arth Patel
 
 ## Comments
 
