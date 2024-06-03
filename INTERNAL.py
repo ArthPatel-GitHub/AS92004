@@ -18,7 +18,7 @@ Please note that all questions should be rounded to one decimal place if it is n
 """
 
 #The primary function to generate the primary quiz maths questions for the user.
-def generate_primary_question():
+def generating_primary_question():
     num1 = random.randint(1, 10)
     num2 = random.randint(1, 5)
     operators = ['+', '-', '*', '/']
@@ -47,6 +47,62 @@ def generating_intermediate_question():
     answer = round(answer, 1)
     question = f"{num1} {operator} {num2}"
     return question, answer
+
+#The primary function to generate the secondary quiz maths questions for the user.
+def generating_secondary_question():
+    num1 = random.randint(1, 30)
+    num2 = random.randint(1, 10)
+    operator = random.choice['*', '/']
+    if operator == "*":
+        answer = num1 * num2
+    else:
+         # Avoid division by zero to make the questions are solvable.
+         if num2 == 0:
+             num2 = 1
+             answer = num1/ num2
+             answer = round(answer, 1)
+             question = f"{num1} {operator} {num2}"
+             return question, answer
+
+# Function to generate a math quiz
+def generate_quiz(level, infinite=False, num_questions=0):
+    print(f"Welcome to the {level} level Math Quiz!")
+    print("Please round your answers to 1 decimal place if necessary.")
+    score = 0
+    history = []
+
+    question_generator = {
+        "Primary": generating_primary_question,
+        "Intermediate": generating_intermediate_question,
+        "Secondary": generating_secondary_question
+    }[level]
+
+    while infinite or len(history) < num_questions:
+        question, answer = question_generator()
+        user_answer = input(f"What is {question}? (Enter 'c' to cancel the quiz) ")
+        if user_answer.lower() == 'c':
+            print("See you next time!")
+            print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
+            return score, history
+        try:
+            user_answer = round(float(user_answer), 1)
+            if abs(user_answer - answer) < 0.1:
+                print("Excellent Job!!! Keep going at it you smart one!!!!")
+                score += 1
+            else:
+                print(f"Sorry!!! The correct answer is {answer}. You will get it next time!!! Keep going!!!!!")
+            history.append((question, user_answer))
+        except ValueError:
+            print("You silly one! Enter a number! Not a letter!!!! Its Maths!!!!!!.")
+
+    print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
+    return score, history
+
+
+
+
+
+
 
 
 
