@@ -18,7 +18,7 @@ Please note that all questions should be rounded to one decimal place if it is n
 """
 
 #The primary function to generate the primary quiz maths questions for the user.
-def generating_primary_question():
+def generate_primary_question():
     num1 = random.randint(1, 10)
     num2 = random.randint(1, 5)
     operators = ['+', '-', '*', '/']
@@ -30,11 +30,28 @@ def generating_primary_question():
     elif operator == '*':
         answer = num1 * num2
     else:
-        # Avoid division by zero to make sure the questions are solveable.
+        # Avoid division by zero to make the questions are solvable.
         if num2 == 0:
             num2 = 1
         answer = num1 / num2
     answer = round(answer, 1)
     question = f"{num1} {operator} {num2}"
     return question, answer
+
+#The primary function to generate the intermediate quiz maths questions for the user.
+def generating_intermediate_question():
+    num1 = random.randint(1, 15)
+    num2 = random.randint (1, 10)
+    operator = random.choice(['+', '-'])
+    answer = num1 + num2 if operator == '+' else num1 - num2
+    answer = round(answer, 1)
+    question = f"{num1} {operator} {num2}"
+    return question, answer
+
+
+
+
+   
+    
+
 
