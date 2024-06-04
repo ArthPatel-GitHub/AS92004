@@ -98,6 +98,16 @@ def generate_quiz(level, infinite=False, num_questions=0):
     print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
     return score, history
 
+#The function to display the quiz history
+def display_history(history):
+    print("Quiz History:")
+    for question, user_answer in history:
+        print(f"Question: {question} - Your Answer: {user_answer}")
+
+
+
+
+
 
 
 
