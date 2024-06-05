@@ -104,6 +104,21 @@ def display_history(history):
     for question, user_answer in history:
         print(f"Question: {question} - Your Answer: {user_answer}")
 
+# The function to get the number of questions the user would like to answer.
+def get_num_questions():
+    while True:
+        num_questions = input("How many questions would you like to answer on this phenomenal quiz?? (Enter 'i' for infinite questions) ")
+        if num_questions.lower() == 'i':
+            return 'i'
+        try:
+            num_questions = int(num_questions)
+            if num_questions > 0:
+                return num_questions
+            else:
+                print("Woah! Good job for knowing that! But for know, lets stick to positive numbers!")
+        except ValueError:
+            print("Please enter the right answer you silly one! There only one right answer to maths!")
+
 
 
 
