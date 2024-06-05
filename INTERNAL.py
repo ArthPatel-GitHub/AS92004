@@ -119,6 +119,53 @@ def get_num_questions():
         except ValueError:
             print("Please enter the right answer you silly one! There only one right answer to maths!")
 
+# Main function to allow the user to play the quizes, to see their history
+def main():
+    quiz_history = []
+    while True:
+        print("\nSelect a Math Quiz level:")
+        print("1. Instructions")
+        print("2. Primary")
+        print("3. Intermediate")
+        print("4. Secondary")
+        print("5. View History")
+        print("6. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            print(INSTRUCTIONS)
+        elif choice == '2':
+            num_questions = get_num_questions()
+            if num_questions == 'i':
+                quiz_history.append(generate_quiz("Primary", infinite=True))
+            else:
+                quiz_history.append(generate_quiz("Primary", num_questions=num_questions))
+        elif choice == '3':
+            num_questions = get_num_questions()
+            if num_questions == 'i':
+                quiz_history.append(generate_quiz("Intermediate", infinite=True))
+            else:
+                quiz_history.append(generate_quiz("Intermediate", num_questions=num_questions))
+        elif choice == '4':
+            num_questions = get_num_questions()
+            if num_questions == 'i':
+                quiz_history.append(generate_quiz("Secondary", infinite=True))
+            else:
+                quiz_history.append(generate_quiz("Secondary", num_questions=num_questions))
+        elif choice == '5':
+            if quiz_history:
+                display_history(quiz_history[-1][1])  # Show history of the latest quiz
+            else:
+                print("No quiz history yet.")
+        elif choice == '6':
+            print("Aw leaving already???... Thats ok! Thank you for playing and make sure to come back again!!!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 6.")
+
+if __name__ == "__main__":
+    main()
+
 
 
 
