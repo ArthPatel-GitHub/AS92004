@@ -1,24 +1,20 @@
 import random
 
-#The instructions for the three quizies, history, exiting the quiz, and other useful tips.
-
+# Instructions for the quizzes
 INSTRUCTIONS = """
-This is a game that has three quizzes. What you need to do is enter a number (2 - 4)
-for which quiz level you would like to do, then the quiz you have selected will start. You
-will then be asked how many questions you would like to answer (please enter a positive integer
-or 'i' for infinite amount of questions) and then the quiz will start! If you would like to exit 
-the quiz while answering the questions, please enter 'c' on the question you are on and the quiz will finish.
-At the end of the quiz, your score will be tallied and shown to you. If you would like too see the full results
-you must play at least one quiz, then enter the number '5' on the menu to see the history. If you would like to
-leave our awesome quiz. Please enter '6' on the menu. We strongly recommend that you use a calculator for our
-quizes, because we are known for having the most difficult quizes on the planet! (Not really, but they are 
-challenging!) And thats all there is too it! Please have fun and as always, do your best!!!!!
+This is a game that has three quizzes. What you need to do is enter a number for which quiz level 
+you would like to do, then the quiz you have selected will start. You will 
+answer the questions that the GAME gives you, with your score being tallied at the end. If you 
+would like to see your quiz history, please enter '5' on your keyboard. If you 
+would like to exit this quiz, please enter '6'. We highly recommend you have a calculator for our quizzes because
+we are known for making the most difficult quizzes!!!!! If you like to leave the quiz, please enter the letter 'c', because we
+don't like letters in maths! Only Numbers!!! Please make sure to do your best!!! Because we love maths!!!!!!
 
-Please note that all questions should be rounded to one decimal place if it is neccesary!
+Note: Please round your answers to 1 decimal place if necessary.
 """
 
-#The primary function to generate the primary quiz maths questions for the user.
-def generating_primary_question():
+# Function to generate primary math questions
+def generate_primary_question():
     num1 = random.randint(1, 10)
     num2 = random.randint(1, 5)
     operators = ['+', '-', '*', '/']
@@ -30,7 +26,7 @@ def generating_primary_question():
     elif operator == '*':
         answer = num1 * num2
     else:
-        # Avoid division by zero to make the questions are solvable.
+        # Avoid division by zero
         if num2 == 0:
             num2 = 1
         answer = num1 / num2
@@ -38,31 +34,31 @@ def generating_primary_question():
     question = f"{num1} {operator} {num2}"
     return question, answer
 
-#The primary function to generate the intermediate quiz maths questions for the user.
-def generating_intermediate_question():
+# Function to generate intermediate math questions
+def generate_intermediate_question():
     num1 = random.randint(1, 15)
-    num2 = random.randint (1, 10)
+    num2 = random.randint(1, 10)
     operator = random.choice(['+', '-'])
     answer = num1 + num2 if operator == '+' else num1 - num2
     answer = round(answer, 1)
     question = f"{num1} {operator} {num2}"
     return question, answer
 
-#The primary function to generate the secondary quiz maths questions for the user.
-def generating_secondary_question():
-    num1 = random.randint(1, 40)
+# Function to generate secondary math questions
+def generate_secondary_question():
+    num1 = random.randint(1, 30)
     num2 = random.randint(1, 10)
-    operator = random.choice['*', '/']
-    if operator == "*":
+    operator = random.choice(['*', '/'])
+    if operator == '*':
         answer = num1 * num2
     else:
-         # Avoid division by zero to make the questions are solvable.
-         if num2 == 0:
-             num2 = 1
-             answer = num1/ num2
-             answer = round(answer, 1)
-             question = f"{num1} {operator} {num2}"
-             return question, answer
+        # Avoid division by zero
+        if num2 == 0:
+            num2 = 1
+        answer = num1 / num2
+    answer = round(answer, 1)
+    question = f"{num1} {operator} {num2}"
+    return question, answer
 
 # Function to generate a math quiz
 def generate_quiz(level, infinite=False, num_questions=0):
@@ -72,9 +68,9 @@ def generate_quiz(level, infinite=False, num_questions=0):
     history = []
 
     question_generator = {
-        "Primary": generating_primary_question,
-        "Intermediate": generating_intermediate_question,
-        "Secondary": generating_secondary_question
+        "Primary": generate_primary_question,
+        "Intermediate": generate_intermediate_question,
+        "Secondary": generate_secondary_question
     }[level]
 
     while infinite or len(history) < num_questions:
@@ -98,13 +94,16 @@ def generate_quiz(level, infinite=False, num_questions=0):
     print(f"You scored {score}/{len(history)} in the {level} level Math Quiz.")
     return score, history
 
-#The function to display the quiz history
+# Function to display quiz history
 def display_history(history):
     print("Quiz History:")
     for question, user_answer in history:
         print(f"Question: {question} - Your Answer: {user_answer}")
 
-# The function to get the number of questions the user would like to answer.
+    percentage = (sum(1 for _, ans in history if isinstance(ans, float)) / len(history)) * 100
+    print(f"Score: {percentage:.2f}% ({sum(1 for _, ans in history if isinstance(ans, float))}/{len(history)})")
+
+# Function to get the number of questions from the user
 def get_num_questions():
     while True:
         num_questions = input("How many questions would you like to answer on this phenomenal quiz?? (Enter 'i' for infinite questions) ")
@@ -119,7 +118,7 @@ def get_num_questions():
         except ValueError:
             print("Please enter the right answer you silly one! There only one right answer to maths!")
 
-# Main function to allow the user to play the quizes, to see their history
+# Main function
 def main():
     quiz_history = []
     while True:
@@ -166,20 +165,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-    
 
 
