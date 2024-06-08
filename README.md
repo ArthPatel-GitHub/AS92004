@@ -32,3 +32,4 @@ Arth Patel
 BJB:
 - 27/05 Please update this README document with the relevant details.
 - 27/05 Your commits are getting more descriptive, which is good.  Keep at it.
+- 08/05 You should add more comments. Firstly, at the start of any selection, i.e. if else.  Also, any loop, try/except and import library call.    
