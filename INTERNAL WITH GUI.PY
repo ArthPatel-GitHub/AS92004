@@ -14,7 +14,7 @@ leave our awesome quiz. Please enter '6' on the menu. We strongly recommend that
 quizzes, because we are known for having the most difficult quizzes on the planet! (Not really, but they are 
 challenging!) And thats all there is too it! Please have fun and as always, do your best!!!!!
 
-Note: Please round your answers to 1 decimal place if necessary.
+Note: Please round your answers to 1 decimal place if it is necessary.
 """
 
 class MathQuizApp:
