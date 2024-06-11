@@ -1,7 +1,8 @@
 import random
 import tkinter as tk
 from tkinter import messagebox
-
+# Instructions for the quizzes, I have used a constant here called "INSTRUCTIONS" because I want this
+# just to be for the instructions without it changing, so that is why I have made is a constant.
 INSTRUCTIONS = """
 This is a game that has three quizzes. What you need to do is enter a number (2 - 4)
 for which quiz level you would like to do, then the quiz you have selected will start. You
