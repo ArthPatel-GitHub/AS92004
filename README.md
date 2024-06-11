@@ -1,16 +1,18 @@
 # PROGRAM NAME
+INTERNAL.PY
 
-A template to introduce your project.
 
 ## Description
 
-My program has three quizes, which are designed for primary, intermediate, and secondary students.
+My program has three quizzes, which are designed for primary, intermediate, and secondary students.
+It also has a history that shows the previous quiz the user has used. It also has instructions to tell the
+user how to use the quizzes, history, and how to exit the game.
 
 ## Table of Contents
 
 My program has the following key features:
 - Feature 1
-- Able to choose out of three quizes depending on the users choice.
+- Able to choose out of three quizzes depending on the users choice.
 Feature 2
 - Feedback for the user if they have got the question wrong or right with a funny comment to make the quiz fun.
 Feature 3
