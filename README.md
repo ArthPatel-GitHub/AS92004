@@ -17,6 +17,16 @@ Feature 2
 - Feedback for the user if they have got the question wrong or right with a funny comment to make the quiz fun.
 Feature 3
 Has quiz history for the user so they can see the questions they have got wrong or right.
+Feature 4
+- Has an infinite number of questions on all three quizzes, with an exit option if the user wishes to exit the quiz at
+any time.
+Feature 5
+- The user can choose how many questions they would like to be asked just before they enter any of the three quizzes.
+Feature 6
+ - The user can exit the quiz from the menu if they wish.
+ Feature 7
+ - The user can see the instructions from the menu if they wish.
+
 
 
 
